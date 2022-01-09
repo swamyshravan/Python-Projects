@@ -14,8 +14,6 @@ import cv2
 import os
 from multiprocessing import process
 from datetime import datetime
-#from pydrive.auth import GoogleAuth # comment out this for auto authentication
-#from pydrive.drive import GoogleDrive # comment out this for auto authentication
 
 from Google import Create_Service  # use this for auto authentication
 from googleapiclient.http import MediaFileUpload # use this for auto authentication
@@ -117,25 +115,6 @@ def record_video():
     out.release()
     cv2.destroyAllWindows()
 record_video.count = 0
-
-
-# contribution for below from (1) and (3)
-'''def UploadToDrive():
-    gauth = GoogleAuth()
-    print("step:1 google authorisation started")
-    gauth.LocalWebserverAuth()
-    print("step:2 authorisation completed!")
-    drive = GoogleDrive(gauth)
-    path = f"/home/pi/Desktop/DSP-Joy-Pi/security" # path of the folder were video is saved
-    for x in os.listdir(path):  # select all files in security folder for upload
-        # use personal drive ID and save a .json file in the same folder as the code
-        f = drive.CreateFile({'parents': [{'id': '<Insert your google drive folder id here>'}]})
-        f.SetContentFile(os.path.join(path, x))
-        print("step:3 selected file for upload")
-        f.Upload()
-        print("file uploaded!")
-    # f.Trash()
-    # print("moved to trash!")'''
 
 # contribution for below from (1) and (3)
 def Self_Upload():
